@@ -1,0 +1,2061 @@
+<!DOCTYPE html>
+
+<!-- Jay-Ar Lee Espiritu -->
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Login Form validation in HTML & CSS | CodingNepal</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+</head>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+*{
+
+  margin: 0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+
+  font-family: "Poppins", sans-serif;
+
+}
+
+body{
+
+  width: 100%;
+
+  height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #5372F0;
+
+}
+
+::selection{
+
+  color: #fff;
+
+  background: #5372F0;
+
+}
+
+.wrapper{
+
+  width: 380px;
+
+  padding: 40px 30px 50px 30px;
+
+  background: #fff;
+
+  border-radius: 5px;
+
+  text-align: center;
+
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.1);
+
+}
+
+.wrapper header{
+
+  font-size: 35px;
+
+  font-weight: 600;
+
+}
+
+.wrapper form{
+
+  margin: 40px 0;
+
+}
+
+form .field{
+
+  width: 100%;
+
+  margin-bottom: 20px;
+
+}
+
+form .field.shake{
+
+  animation: shake 0.3s ease-in-out;
+
+}
+
+@keyframes shake {
+
+  0%, 100%{
+
+    margin-left: 0px;
+
+  }
+
+  20%, 80%{
+
+    margin-left: -12px;
+
+  }
+
+  40%, 60%{
+
+    margin-left: 12px;
+
+  }
+
+}
+
+form .field .input-area{
+
+  height: 50px;
+
+  width: 100%;
+
+  position: relative;
+
+}
+
+form input{
+
+  width: 100%;
+
+  height: 100%;
+
+  outline: none;
+
+  padding: 0 45px;
+
+  font-size: 18px;
+
+  background: none;
+
+  caret-color: #5372F0;
+
+  border-radius: 5px;
+
+  border: 1px solid #bfbfbf;
+
+  border-bottom-width: 2px;
+
+  transition: all 0.2s ease;
+
+}
+
+form .field input:focus,
+
+form .field.valid input{
+
+  border-color: #5372F0;
+
+}
+
+form .field.shake input,
+
+form .field.error input{
+
+  border-color: #dc3545;
+
+}
+
+.field .input-area i{
+
+  position: absolute;
+
+  top: 50%;
+
+  font-size: 18px;
+
+  pointer-events: none;
+
+  transform: translateY(-50%);
+
+}
+
+.input-area .icon{
+
+  left: 15px;
+
+  color: #bfbfbf;
+
+  transition: color 0.2s ease;
+
+}
+
+.input-area .error-icon{
+
+  right: 15px;
+
+  color: #dc3545;
+
+}
+
+form input:focus ~ .icon,
+
+form .field.valid .icon{
+
+  color: #5372F0;
+
+}
+
+form .field.shake input:focus ~ .icon,
+
+form .field.error input:focus ~ .icon{
+
+  color: #bfbfbf;
+
+}
+
+form input::placeholder{
+
+  color: #bfbfbf;
+
+  font-size: 17px;
+
+}
+
+form .field .error-txt{
+
+  color: #dc3545;
+
+  text-align: left;
+
+  margin-top: 5px;
+
+}
+
+form .field .error{
+
+  display: none;
+
+}
+
+form .field.shake .error,
+
+form .field.error .error{
+
+  display: block;
+
+}
+
+form .pass-txt{
+
+  text-align: left;
+
+  margin-top: -10px;
+
+}
+
+.wrapper a{
+
+  color: #5372F0;
+
+  text-decoration: none;
+
+}
+
+.wrapper a:hover{
+
+  text-decoration: underline;
+
+}
+
+form input[type="submit"]{
+
+  height: 50px;
+
+  margin-top: 30px;
+
+  color: #fff;
+
+  padding: 0;
+
+  border: none;
+
+  background: #5372F0;
+
+  cursor: pointer;
+
+  border-bottom: 2px solid rgba(0,0,0,0.1);
+
+  transition: all 0.3s ease;
+
+}
+
+form input[type="submit"]:hover{
+
+  background: #2c52ed;
+
+}
+
+      
+
+              /* Google Fonts Import Link */
+
+              @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+              *{
+
+              margin: 0;
+
+              padding: 0;
+
+              box-sizing: border-box;
+
+              font-family: 'Poppins', sans-serif;
+
+              }
+
+              .sidebar{
+
+              position: fixed;
+
+              top: 0;
+
+              left: 0;
+
+              height: 100%;
+
+              width: 260px;
+
+              background: #121212;
+
+              z-index: 100;
+
+              transition: all 0.5s ease;
+
+              }
+
+              .sidebar.close{
+
+              width: 78px;
+
+              }
+
+              .sidebar .logo-details{
+
+              height: 60px;
+
+              width: 100%;
+
+              display: flex;
+
+              align-items: center;
+
+              }
+
+              .sidebar .logo-details i{
+
+              font-size: 30px;
+
+              color: #fff;
+
+              height: 50px;
+
+              min-width: 78px;
+
+              text-align: center;
+
+              line-height: 50px;
+
+              }
+
+              .sidebar .logo-details .logo_name{
+
+              font-size: 20px;
+
+              text-align: center;
+
+              color: #fff;
+
+              font-weight: 600;
+
+              transition: 0.3s ease;
+
+              transition-delay: 0.1s;
+
+              }
+
+              .sidebar.close .logo-details .logo_name{
+
+              transition-delay: 0s;
+
+              opacity: 0;
+
+              pointer-events: none;
+
+              }
+
+              .sidebar .nav-links{
+
+              height: 100%;
+
+              padding: 30px 0 150px 0;
+
+              overflow: auto;
+
+              }
+
+              .sidebar.close .nav-links{
+
+              overflow: visible;
+
+              }
+
+              .sidebar .nav-links::-webkit-scrollbar{
+
+              display: none;
+
+              }
+
+              .sidebar .nav-links li{
+
+              position: relative;
+
+              list-style: none;
+
+              transition: all 0.4s ease;
+
+              }
+
+              .sidebar .nav-links li:hover{
+
+              background: #121212;
+
+              }
+
+              .sidebar .nav-links li .iocn-link{
+
+              display: flex;
+
+              align-items: center;
+
+              justify-content: space-between;
+
+              }
+
+              .sidebar.close .nav-links li .iocn-link{
+
+              display: block
+
+              }
+
+              .sidebar .nav-links li i{
+
+              height: 50px;
+
+              min-width: 78px;
+
+              text-align: center;
+
+              line-height: 50px;
+
+              color: white;
+
+              font-size: 20px;
+
+              cursor: pointer;
+
+              transition: all 0.3s ease;
+
+              }
+
+              .sidebar .nav-links li.showMenu i.arrow{
+
+              transform: rotate(-180deg);
+
+              }
+
+              .sidebar.close .nav-links i.arrow{
+
+              display: none;
+
+              }
+
+              .sidebar .nav-links li a{
+
+              display: flex;
+
+              align-items: center;
+
+              text-decoration: none;
+
+              }
+
+              .sidebar .nav-links li a .link_name{
+
+              font-size: 18px;
+
+              font-weight: 400;
+
+              color: white;
+
+              transition: all 0.4s ease;
+
+              }
+
+              .sidebar.close .nav-links li a .link_name{
+
+              opacity: 0;
+
+              pointer-events: none;
+
+              }
+
+              .sidebar .nav-links li .sub-menu{
+
+              padding: 6px 6px 14px 25px;
+
+              margin-top: -10px;
+
+              background: #121212;
+
+              display: none;
+
+              }
+
+              .sidebar .nav-links li.showMenu .sub-menu{
+
+              display: block;
+
+              }
+
+              .sidebar .nav-links li .sub-menu a{
+
+              color: white;
+
+              font-size: 15px;
+
+              padding: 5px 0;
+
+              white-space: nowrap;
+
+              opacity: 0.6;
+
+              transition: all 0.3s ease;
+
+              }
+
+              .sidebar .nav-links li .sub-menu a:hover{
+
+              opacity: 1;
+
+              }
+
+              .sidebar.close .nav-links li .sub-menu{
+
+              position: absolute;
+
+              left: 100%;
+
+              top: -10px;
+
+              margin-top: 0;
+
+              padding: 10px 20px;
+
+              border-radius: 0 6px 6px 0;
+
+              opacity: 0;
+
+              display: block;
+
+              pointer-events: none;
+
+              transition: 0s;
+
+              }
+
+              .sidebar.close .nav-links li:hover .sub-menu{
+
+              top: 0;
+
+              opacity: 1;
+
+              pointer-events: auto;
+
+              transition: all 0.4s ease;
+
+              }
+
+              .sidebar .nav-links li .sub-menu .link_name{
+
+              display: none;
+
+              }
+
+              .sidebar.close .nav-links li .sub-menu .link_name{
+
+              font-size: 18px;
+
+              opacity: 1;
+
+              display: block;
+
+              }
+
+              .sidebar .nav-links li .sub-menu.blank{
+
+              opacity: 1;
+
+              pointer-events: auto;
+
+              padding: 3px 20px 6px 16px;
+
+              opacity: 0;
+
+              pointer-events: none;
+
+              }
+
+              .sidebar .nav-links li:hover .sub-menu.blank{
+
+              top: 50%;
+
+              transform: translateY(-50%);
+
+              }
+
+              .sidebar .profile-details{
+
+              position: fixed;
+
+              bottom: 0;
+
+              width: 260px;
+
+              display: flex;
+
+              align-items: center;
+
+              justify-content: space-between;
+
+              background: #121212;
+
+              padding: 12px 0;
+
+              transition: all 0.5s ease;
+
+              }
+
+              .sidebar.close .profile-details{
+
+              background: none;
+
+              }
+
+              .sidebar.close .profile-details{
+
+              width: 78px;
+
+              }
+
+              .sidebar .profile-details .profile-content{
+
+              display: flex;
+
+              align-items: center;
+
+              }
+
+              .sidebar .profile-details img{
+
+              height: 52px;
+
+              width: 52px;
+
+              object-fit: cover;
+
+              border-radius: 16px;
+
+              margin: 0 14px 0 12px;
+
+              background: #121212;
+
+              transition: all 10s ease;
+
+              }
+
+              .sidebar.close .profile-details img{
+
+              padding: 100px;
+
+              }
+
+              .sidebar .profile-details .profile_name,
+
+              .sidebar .profile-details .job{
+
+              color: #fff;
+
+              font-size: 11px;
+
+              font-weight: 500;
+
+              white-space: nowrap;
+
+              }
+
+              .sidebar.close .profile-details i,
+
+              .sidebar.close .profile-details .profile_name,
+
+              .sidebar.close .profile-details .job{
+
+              display: none;
+
+              }
+
+              .sidebar .profile-details .job{
+
+              font-size: 15px;
+
+              color: green;
+
+              }
+
+              .home-section{
+
+              position: fixed;
+
+              background: #121212;
+
+              height: 100vh;
+
+              left: 260px;
+
+              width: calc(100% - 260px);
+
+              transition: all 0.5s ease;
+
+              }
+
+              .sidebar.close ~ .home-section{
+
+              left: 78px;
+
+              width: calc(100% - 78px);
+
+              }
+
+              .home-section .home-content{
+
+              height: 60px;
+
+              display: flex;
+
+              align-items: center;
+
+              }
+
+              .home-section .home-content .bx-menu,
+
+              .home-section .home-content .text{
+
+              color: #E2E2E4;
+
+              font-size: 35px;
+
+              }
+
+              .home-section .home-content .bx-menu{
+
+              margin: 0 15px;
+
+              cursor: pointer;
+
+              }
+
+              .home-section .home-content .text{
+
+              font-size: 26px;
+
+              font-weight: 600;
+
+              }
+
+              @media (max-width: 400px) {
+
+              .sidebar.close .nav-links li .sub-menu{
+
+              display: none;
+
+              }
+
+              .sidebar{
+
+              width: 260px;
+
+              }
+
+              .sidebar.close{
+
+              width: 0;
+
+              }
+
+              .home-section{
+
+              left: 260px;
+
+              width: calc(100% - 78px);
+
+              z-index: 100;
+
+              }
+
+              .sidebar.close ~ .home-section{
+
+              width: 100%;
+
+              left: 0;
+
+              }
+
+              }
+
+              
+
+              .main{
+
+              height: 100vh;
+
+              display: flex;
+
+              justify-content: center;
+
+              align-items: center;
+
+              }
+
+              
+
+              .main h1{
+
+              color: rgba(255, 255, 255, 0.8);
+
+              font-size: 65px;
+
+              }
+
+              
+
+              .cursor{
+
+              z-index: 999;
+
+              position: fixed;
+
+              background: #2696E8;
+
+              width: 25px;
+
+              height: 25px;
+
+              border-radius: 50%;
+
+              pointer-events: none;
+
+              box-shadow: 0 0 900px #2696E8,
+
+              0 0 60px #2696E8,
+
+              0 0 100px #2696E8;
+
+              animation: colors 0.1s infinite;
+
+              transform: translate(-50%, -50%);
+
+              display: none;
+
+              }
+
+              
+
+              @keyframes colors{
+
+              0%{
+
+              filter: hue-rotate(0deg);
+
+              }
+
+              100%{
+
+              filter: hue-rotate(360deg);
+
+              }
+
+              }
+
+              
+
+              .cursor:before{
+
+              content: '';
+
+              position: absolute;
+
+              background: #2696E8;
+
+              width: 5px;
+
+              height: 5px;
+
+              opacity: 0.2;
+
+              transform: translate(-30%, -30%);
+
+              border-radius: 50%;
+
+              }
+
+              
+
+              
+
+              .loaders {
+
+              background-color: #2b4463;
+
+              
+
+              }
+
+              #loader {
+
+              position: absolute;
+
+              left: 50%;
+
+              top: 50%;
+
+              z-index: 100;
+
+              width: 160px;
+
+              height: 160px;
+
+              margin: -76px 0 0 -76px;
+
+              border: 3px solid pink;
+
+              border-top-color: cyan;
+
+              border-bottom-color: maroon;
+
+              border-left-color: teal;
+
+              border-right-color: indigo;
+
+              border-radius: 50%;
+
+              animation: loading 6s ease infinite;
+
+              }
+
+              
+
+              @keyframes loading {
+
+              from {
+
+              transform: rotate(0turn);
+
+              }
+
+              to {
+
+              transform: rotate(100turn);
+
+              }
+
+              }
+
+              
+
+              /* Add animation to "page content" */
+
+              .animate-bottom {
+
+              position: relative;
+
+              -webkit-animation-name: animatebottom;
+
+              -webkit-animation-duration: 5s;
+
+              animation-name: animatebottom;
+
+              animation-duration: 5s
+
+              }
+
+              
+
+              @-webkit-keyframes animatebottom {
+
+              from { bottom:-100px; opacity:0 } 
+
+              to { bottom:0px; opacity:1 }
+
+              }
+
+              
+
+              @keyframes animatebottom { 
+
+              from{ bottom:-100px; opacity:0 } 
+
+              to{ bottom:0; opacity:1 }
+
+              }
+
+              
+
+              #myDiv {
+
+              display: none;
+
+              text-align: center;
+
+              }
+
+              
+
+              .wrapper {
+
+              position: relative;
+
+              width: 80vw;
+
+              transform: translate(-50%, -50%);
+
+              top: 50%;
+
+              left: 50%;
+
+              display: flex;
+
+              justify-content: space-around;
+
+              gap: 10px;
+
+              }
+
+              .container {
+
+              width: 28vmin;
+
+              height: 28vmin;
+
+              display: flex;
+
+              flex-direction: column;
+
+              justify-content: space-around;
+
+              padding: 1em 0;
+
+              position: relative;
+
+              font-size: 16px;
+
+              border-radius: 0.5em;
+
+              background-color: #21242b;
+
+              border-bottom: 10px solid #18f98f;
+
+              }
+
+              i {
+
+              color: #18f98f;
+
+              font-size: 2.5em;
+
+              text-align: center;
+
+              }
+
+              span.num {
+
+              color: #ffffff;
+
+              display: grid;
+
+              place-items: center;
+
+              font-weight: 600;
+
+              font-size: 3em;
+
+              }
+
+              span.text {
+
+              color: #e0e0e0;
+
+              font-size: 1em;
+
+              text-align: center;
+
+              pad: 0.7em 0;
+
+              font-weight: 400;
+
+              line-height: 0;
+
+              }
+
+              @media screen and (max-width: 1024px) {
+
+              .wrapper {
+
+              width: 85vw;
+
+              }
+
+              .container {
+
+              height: 26vmin;
+
+              width: 26vmin;
+
+              font-size: 12px;
+
+              }
+
+              }
+
+              @media screen and (max-width: 768px) {
+
+              .wrapper {
+
+              width: 90vw;
+
+              flex-wrap: wrap;
+
+              gap: 30px;
+
+              }
+
+              .container {
+
+              width: calc(50% - 40px);
+
+              height: 30vmin;
+
+              font-size: 14px;
+
+              }
+
+              }
+
+              @media screen and (max-width: 480px) {
+
+              .wrapper {
+
+              gap: 15px;
+
+              }
+
+              .container {
+
+              width: 100%;
+
+              height: 25vmin;
+
+              font-size: 8px;
+
+              }
+
+              }
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              .sidenav {
+
+              height: 100%;
+
+              width: 0;
+
+              position: fixed;
+
+              z-index: 1;
+
+              top: 0;
+
+              left: 0;
+
+              background-color: #111;
+
+              overflow-x: hidden;
+
+              transition: 0.5s;
+
+              padding-top: 60px;
+
+              }
+
+              
+
+              .sidenav a {
+
+              padding: 8px 8px 8px 1px;
+
+              text-decoration: none;
+
+              font-size: 14px;
+
+              color: #818181;
+
+              display: block;
+
+              transition: 0.3s;
+
+              }
+
+              
+
+              .sidenav a:hover {
+
+              color: #f1f1f1;
+
+              }
+
+              
+
+              .sidenav .closebtn {
+
+              position: absolute;
+
+              top: 0;
+
+              right: 1px;
+
+              font-size: 36px;
+
+              margin-left: 50px;
+
+              }
+
+              
+
+              #main {
+
+              transition: margin-left .5s;
+
+              padding: 16px;
+
+              }
+
+              
+
+              @media screen and (max-height: 450px) {
+
+              .sidenav {padding-top: 15px;}
+
+              .sidenav a {font-size: 18px;}
+
+              }
+
+       
+
+</style>
+
+<body>
+
+  <div class="wrapper">
+
+    <header>Jepong Project</header>
+
+    <form action="#">
+
+      <div class="field emails">
+
+        <div class="input-area">
+
+          <input id="email" type="text" placeholder="Username, Email or ID">
+
+          <i class="icon fas fa-envelope"></i>
+
+          <i class="error error-icon fas fa-exclamation-circle"></i>
+
+        </div>
+
+        <div class="error error-txt">Username, Email or ID can't be blank</div>
+
+      </div>
+
+      <div class="field passwords">
+
+        <div class="input-area">
+
+          <input id="password" type="passwords" placeholder="Account Password">
+
+          <i class="icon fas fa-lock"></i>
+
+          <i class="error error-icon fas fa-exclamation-circle"></i>
+
+        </div>
+
+        <div class="error error-txt">Password can't be blank</div>
+
+      </div>
+
+      <div>
+
+      <b><p style="text-align:center">Only Verified Members!</p></b>
+
+      </div>
+
+     <a href="#jepong-project"> <input type="submit" value="Login" onclick="auth()" /></a>
+
+    </form>
+
+    
+
+    </style>
+
+    <body id="#jepong-project-premium" class="loaders" onload="myFunction()" style="margin:0;">
+
+    
+
+    
+
+    <div id="loader"></div>
+
+    
+
+    <div style="display:none;" id="myDiv" class="animate-bottom">
+
+    
+
+    <div class="cursor"></div>
+
+    
+
+    <section class="main">
+
+    
+
+    <div class="sidebar close">
+
+    <div class="logo-details">
+
+    <i class='bx bxl-react bx-spin'></i>
+
+    <span class="logo_name">Jepong Project</span>
+
+    </div>
+
+    <ul class="nav-links">
+
+    <li>
+
+    <a href="https://main.jepongdev.ml">
+
+    <i class='bx bx-home' ></i>
+
+    <span class="link_name">Home</span>
+
+    </a>
+
+    <ul class="sub-menu blank">
+
+    <li><a class="link_name" href="#">JepongDevzPH</a></li>
+
+    </ul>
+
+    </li>
+
+    <li>
+
+    <div class="iocn-link">
+
+    <a>
+
+    <i class='bx bx-joystick' ></i>
+
+    <span class="link_name">Games</span>
+
+    </a>
+
+    <i class='bx bx-basketball bx-burst-hover arrow' ></i>
+
+    </div>
+
+    <ul class="sub-menu">
+
+    <li><a class="link_name" href="#">Contents</a></li>
+
+    <li><a href="https://jepongdinogame.jepongdev.ml">Run, Dino Run</a></li>
+
+    <li><a href="https://tictactoe.jepongdev.ml">Tic Tac Toe</a></li>
+
+    <li><a href="https://guess.jepongdev.ml">Guess the Number</a></li>
+
+    <li><a href="https://.jepongdev.ml">Typing Test</a></li>
+
+    <li><a href="https://.jepongdev.ml">Tic Tac Toe</a></li>
+
+    <li><a href="https://.jepongdev.ml">Guess the Number</a></li>
+
+    </ul>
+
+    </li>
+
+    <li>
+
+    <div class="iocn-link">
+
+    <a>
+
+    <i class='bx bx-globe-alt' ></i>
+
+    <span class="link_name">Projects</span>
+
+    </a>
+
+    <i class='bx bxs-toggle-left arrow' ></i>
+
+    </div>
+
+    <ul class="sub-menu">
+
+    <li><a class="link_name">Posts</a></li>
+
+    <li><a href="#">To Do List</a></li>
+
+    <li><a href="#">Stop Watch</a></li>
+
+    <li><a href="#">Calendar</a></li>
+
+    <li><a href="#">Calculator</a></li>
+
+    <li><a href="#">Music Player</a></li>
+
+    <li><a href="#">Dictionary</a></li>
+
+    <li><a href="#">Dictionary v2</a></li>
+
+    <li><a href="#">Coming Soon</a></li>
+
+    <li><a href="#">Coming Soon</a></li>
+
+    </ul>
+
+    </li>
+
+    <li>
+
+    <ul class="sub-menu blank">
+
+    <li><a class="link_name" href="#"></a></li>
+
+    </ul>
+
+    </li>
+
+    <li>
+
+    <div class="iocn-link">
+
+    <a>
+
+    <i class='bx bxl-gitlab' ></i>
+
+    <span class="link_name">Tools</span>
+
+    </a>
+
+    <i class='bx bx-cog bx-spin-hover arrow' ></i>
+
+    </div>
+
+    <ul class="sub-menu">
+
+    <li><a class="link_name">Online Tools</a></li>
+
+    <li><a href="https://jeromelaliag.org/tools/GigaLife%20Register">GigaLife Registrator</a></li>
+
+    <li><a href="https://jeromelaliag.org/tools/GLA%20Generator">GLA Generator</a></li>
+
+    <li><a href="https://jeromelaliag.org/tools/Spotify%20Generator">Spotify Generator</a></li>
+
+    <li><a href="https://jeromelaliag.org/tools/GOMO%20Register">Gomo Registrator</a></li>
+
+    <li><a href="https://jeromelaliag.org/tools/DITO%20Register/">Dito Registrator</a></li>
+
+    <li><a href="https://jeromelaliag.org/tools/Credit%20Card%20Generator">Credit Card Generator</a></li>
+
+    <li><a href="https://sts.kenlie.xyz/pasaload.php">GigaLife Pasa-Load</a></li>
+
+    <li><a href="https://sts.kenlie.xyz/pasadata.php">GigaLife Pasa-Data</a></li>
+
+    <li><a href="https://sts.kenlie.xyz/pasapoints.php">GigaLife Pasa-Points</a></li>
+
+    <li><a href="https://sts.kenlie.xyz/pasapromo.php">GigaLife Pasa-Promo</a></li>
+
+    <li><a href="https://tunnel.sshcore.com">Credit Card Checker</a></li>
+
+    <li><a href="https://jeromelaliag.org/tools/PHP%20Request%20Generator">PHP Request Generator</a></li>
+
+    <li><a href="https://namso-gen.com">Credit Card Generator v2</a></li>
+
+    <li><a href="https://php.kenlie.xyz">PHP Request Generator v2</a></li>
+
+    <li><a href="#">Coming Soon</a></li>
+
+    <li><a href="#">Coming Soon</a></li>
+
+    <li><a href="#">Coming Soon</a></li>
+
+    <li><a href="#">Coming Soon</a></li>
+
+    </ul>
+
+    </li>
+
+    
+
+    <li>
+
+    <div class="iocn-link">
+
+    <a>
+
+    <i class='bx bx-map-pin' ></i>
+
+    <span class="link_name">More</span>
+
+    </a>
+
+    <i class='bx bx-sync arrow' ></i>
+
+    </div>
+
+    <ul class="sub-menu">
+
+    <li><a class="link_name" href="#">Category</a></li>
+
+    <li><a href="https://ytmp3.cc/74086/">Youtube Music Converter</a></li>
+
+    <li><a href="https://snapsave.app/#google_vignette">Facebook Video Converter</a></li>
+
+    <li><a href="https://snaptik.app/en">TikTok Video Converter</a></li>
+
+    <li><a href="https://snapsave.io/en1/youtube-mp4">YouTube Video Converter</a></li>
+
+    <li><a href="https://worldpostalcode.com/philippines/">Postal Code Finder</a></li>
+
+    <li><a href="https://pmh.li/movies">Watch & Download Movies</a></li>
+
+    <li><a href="https://speedtest.net">Speed Test</a></li>
+
+    <li><a href="https://downdetector.ph/">Down Company Checker</a></li>
+
+    <li><a href="https://colorswall.com/palettes">Colors Palettes Finder</a></li>
+
+    <li><a href="https://www3.lunapic.com/editor/">Image Editor Online</a></li>
+
+    <li><a href="https://imagecolorpicker.com/en">Image Color Picker</a></li>
+
+    <li><a href="https://www.apunkagames.biz/">PC Games Downloader</a></li>
+
+    <li><a href="#">Coming Soon</a></li>
+
+    <li><a href="#">Coming Soon</a></li>
+
+    </ul>
+
+    </li>
+
+    
+
+    <div id="mySidenav" class="sidenav">
+
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+    <div class="overlay-content">
+
+    <a>Jepong Project</a>
+
+    <a>Free Online Tools & Many More</a>
+
+    <a>Useful Website to help Daily Lifestyle</a>
+
+    <a style="color:green">100% Safe!</a>
+
+    <a style="color:maroon">DISCLAIMER!<br>I hereby confirm that the other web services are not mine, I only compile them on my website because it was so usable and helpful either.</a>
+
+    <a style="color:green">No Copyright Infringement Intended</a>
+
+    <a style="color:#beede5">Credits to the rightful owners</a>
+
+    <a style="color:green">This Website is purely for Daily Basis | Educational Purposes Only. <br>Section 107 of Copyright Act No. 1976, allows these materials for fair use.</a>
+
+    <a>Jay-Ar Lee Espiritu<br>Owner of Jepong Project</a>
+
+    <a style="color:teal">All Rights Reserved - 2022<a>
+
+    </div>
+
+    </div>
+
+    
+
+    <li>
+
+    <a href="#">
+
+    
+
+    <i class='bx bx-ghost'></i>
+
+    <span onclick="openNav()" class="link_name">About</span>
+
+    </a>
+
+    <ul class="sub-menu blank">
+
+    <li><a class="link_name" href="#">Developed by Jay-Ar Lee Espiritu</a></li>
+
+    </ul>
+
+    </li>
+
+    </span>
+
+    <li>
+
+    <div class="profile-details">
+
+    <div class="profile-content">
+
+    <img src="https://raw.githubusercontent.com/JDevzDoubleJ/Project-404/main/FB_IMG_1667908447453.jpg" alt="profileImg">
+
+    </div>
+
+    <div class="name-job">
+
+    <div class="profile_name">Jay-Ar Lee Espiritu</div>
+
+    <div class="job">Owner</div>
+
+    </div>
+
+    <a href="https://me.jepongdev.ml">
+
+    <i class='bx bx-log-out' ></i>
+
+    </a>
+
+    </div>
+
+    </li>
+
+    </ul>
+
+    </div>
+
+    <section class="home-section">
+
+    <div class="home-content">
+
+    <i class='bx bx-menu bx-fade-right-hover' ></i>
+
+    <span class="text">Welcome to Projects!</span>
+
+    </div>
+
+    
+
+    <div class="wrapper">
+
+    <div class="container">
+
+    <i class="fas fa-code"></i>
+
+    <span class="num" data-val="27">000</span>
+
+    <span class="text">Published Projects</span>
+
+    </div>
+
+    
+
+    <div class="container">
+
+    <i class="fa-brands fa-free-code-camp"></i>
+
+    <span class="num" data-val="48">000</span>
+
+    <span class="text">Upcoming Projects</span>
+
+    </div>
+
+    
+
+    <div class="container">
+
+    <i class="fas fa-thumbs-up"></i>
+
+    <span class="num" data-val="2467">000</span>
+
+    <span class="text">Likes</span>
+
+    </div>
+
+    
+
+    <div class="container">
+
+    <i class="fas fa-eye"></i>
+
+    <span class="num" data-val="8761">000</span>
+
+    <span class="text">Views</span>
+
+    </div>
+
+    
+
+    <div class="container">
+
+    <i class="fas fa-heart"></i>
+
+    <span class="num" data-val="1822">000</span>
+
+    <span class="text">Hearts</span>
+
+    </div>
+
+    </div>
+
+    
+
+  </div>
+
+  <script>
+
+  const form = document.querySelector("form");
+
+  eField = form.querySelector(".emails"),
+
+  eInput = eField.querySelector("input"),
+
+  pField = form.querySelector(".passwords"),
+
+  pInput = pField.querySelector("input");
+
+  
+
+  form.onsubmit = (e)=>{
+
+  e.preventDefault(); //preventing from form submitting
+
+  //if emails and passwords is blank then add shake class in it else call specified function
+
+  (eInput.value == "") ? eField.classList.add("shake", "error") : checkemails();
+
+  (pInput.value == "") ? pField.classList.add("shake", "error") : checkPass();
+
+  
+
+  setTimeout(()=>{ //remove shake class after 500ms
+
+  eField.classList.remove("shake");
+
+  pField.classList.remove("shake");
+
+  }, 500);
+
+  
+
+  eInput.onkeyup = ()=>{checkemails();} //calling checkemails function on emails input keyup
+
+  pInput.onkeyup = ()=>{checkPass();} //calling checkpasswords function on pass input keyup
+
+  
+
+  function checkemails(){ //checkemails function
+
+  let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/; //pattern for validate emails
+
+  if(!eInput.value.match(pattern)){ //if pattern not matched then add error and remove valid class
+
+  eField.classList.add("error");
+
+  eField.classList.remove("valid");
+
+  let errorTxt = eField.querySelector(".error-txt");
+
+  //if emails value is not empty then show please enter valid emails else show emails can't be blank
+
+  (eInput.value != "") ? errorTxt.innerText = "Enter a valid Account" : errorTxt.innerText = "Username, Email or ID can't be blank";
+
+  }else{ //if pattern matched then remove error and add valid class
+
+  eField.classList.remove("error");
+
+  eField.classList.add("valid");
+
+  }
+
+  }
+
+  
+
+  function checkPass(){ //checkPass function
+
+  if(pInput.value == ""){ //if pass is empty then add error and remove valid class
+
+  pField.classList.add("error");
+
+  pField.classList.remove("valid");
+
+  }else{ //if pass is empty then remove error and add valid class
+
+  pField.classList.remove("error");
+
+  pField.classList.add("valid");
+
+  }
+
+  }
+
+  
+
+  //if eField and pField doesn't contains error class that mean user filled details properly
+
+  if(!eField.classList.contains("error") && !pField.classList.contains("error")){
+
+  window.location.href = form.getAttribute("action"); //redirecting user to the specified url which is inside action attribute of form tag
+
+  }
+
+  }
+
+        
+
+               function auth() {
+
+               var email = document.getElementById("email").value;
+
+               var password = document.getElementById("password").value;
+
+               
+
+               if (email === "jepongproject@jepongdev.ml" && password === "verified") {
+
+               
+
+                alert("Welcome, back to Jepong Project Premium!");
+
+               
+
+               } else {
+
+               alert("You are not a member!");
+
+               return;
+
+               }
+
+               
+
+               }
+
+            
+
+             let arrow = document.querySelectorAll(".arrow");
+
+             for (var i = 0; i < arrow.length; i++) {
+
+             arrow[i].addEventListener("click", (e)=>{
+
+             let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+
+             arrowParent.classList.toggle("showMenu");
+
+             });
+
+             }
+
+             let sidebar = document.querySelector(".sidebar");
+
+             let sidebarBtn = document.querySelector(".bx-menu");
+
+             console.log(sidebarBtn);
+
+             sidebarBtn.addEventListener("click", ()=>{
+
+             sidebar.classList.toggle("close");
+
+             });
+
+             
+
+             const cursor = document.querySelector(".cursor");
+
+             var timeout;
+
+             
+
+             //follow cursor on mousemove
+
+             document.addEventListener("mousemove", (e) => {
+
+             let x = e.pageX;
+
+             let y = e.pageY;
+
+             
+
+             cursor.style.top = y + "px";
+
+             cursor.style.left = x + "px";
+
+             cursor.style.display = "block";
+
+             
+
+             //cursor effects when mouse stopped
+
+             function mouseStopped(){
+
+             cursor.style.display = "none";
+
+             }
+
+             clearTimeout(timeout);
+
+             timeout = setTimeout(mouseStopped, 1000);
+
+             });
+
+             
+
+             //cursor effects when mouseout
+
+             document.addEventListener("mouseout", () => {
+
+             cursor.style.display = "none";
+
+             }); 
+
+             
+
+             var myVar;
+
+             
+
+             function myFunction() {
+
+             myVar = setTimeout(showPage, 100);
+
+             }
+
+             
+
+             function showPage() {
+
+             document.getElementById("loader").style.display = "none";
+
+             document.getElementById("myDiv").style.display = "block";
+
+             }
+
+             
+
+             let valueDisplays = document.querySelectorAll(".num");
+
+             let interval = 4000;
+
+             
+
+             valueDisplays.forEach((valueDisplay) => {
+
+             let startValue = 0;
+
+             let endValue = parseInt(valueDisplay.getAttribute("data-val"));
+
+             let duration = Math.floor(interval / endValue);
+
+             let counter = setInterval(function () {
+
+             startValue += 1;
+
+             valueDisplay.textContent = startValue;
+
+             if (startValue == endValue) {
+
+             clearInterval(counter);
+
+             }
+
+             }, duration);
+
+             });
+
+             
+
+             function openNav() {
+
+             document.getElementById("mySidenav").style.width = "250px";
+
+             document.getElementById("main").style.marginLeft = "250px";
+
+             document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+
+             }
+
+             
+
+             function closeNav() {
+
+             document.getElementById("mySidenav").style.width = "0";
+
+             document.getElementById("main").style.marginLeft= "0";
+
+             document.body.style.backgroundColor = "white";
+
+             }
+
+            
+
+            
+
+  </script>
+
+</body>
+
+</html>
